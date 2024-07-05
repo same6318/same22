@@ -7,3 +7,12 @@
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
+
+<p>
+  <strong>Profile_image:</strong>
+  <%= link_to @user.profile_image.filename, @user.profile_image if @user.profile_image.attached? %>
+  <%= image_tag @user.profile_image.variant(resize_to_limit: [100,100]) if @user.profile_image.attached? %>
+  <%# 詳細画面でimage_tagを使って画像を表示
+      表示する画像サイズをvariantメソッドを使ってリサイズ可能にして、
+      (resize_to_limit: [100,100])で縦横比を維持したままサイズを指定。今回は縦横100pxの画像表示%>
+</p>
